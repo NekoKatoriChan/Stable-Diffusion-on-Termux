@@ -1,0 +1,23 @@
+#!bin/bash
+
+pkg update && pkg upgrade
+  apt install wget git cmake
+  git clone --recursive https://github.com/leejet/stable-diffusion.cpp
+  cd stable-diffusion.cpp
+  git pull origin master
+  git submodule init
+  git submodule update
+
+mkdir build
+cd build
+cmake ..
+cmake --build . --config Release
+	echo "Completed! Just a moment...."
+	cd bin
+	mv sd $PATH/
+	wget https://raw.githubusercontent.com/NekoKatoriChan/Stable-Diffusion-on-Termux/refs/heads/main/compoment/config -O .sd-config
+	wget https://raw.githubusercontent.com/NekoKatoriChan/Stable-Diffusion-on-Termux/refs/heads/main/compoment/sd-ez -O $PATH/sd-ez
+	chmod +x $PATH/sd-ez
+	echo 'Installation completed! To start SD, type "sd". For easy mode, type "sd-ez"'
+	sleep 3
+

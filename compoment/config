@@ -1,0 +1,8 @@
+export MODEL=
+export HEIGHT=
+export WIDTH=
+export STEP=
+export STRENGTH=
+export NEG_PMT=
+export CFG=
+export QUANT=

@@ -1,0 +1,5 @@
+#!bin/bash
+	pkg update && pkg upgrade
+	apt install wget
+	wget https://github.com/NekoKatoriChan/Stable-Diffusion-on-Termux/raw/refs/heads/main/bin/sd -O $PATH/sd
+	wget https://raw.githubusercontent.com/NekoKatoriChan/Stable-Diffusion-on-Termux/refs/heads/main/compoment/sd-ez -O $PATH/sd-ez

@@ -1,0 +1,49 @@
+#!/bin/bash
+source config
+echo "Stable Diffusion (EZ mode)"
+echo ""
+echo "[1] Text to Image"
+echo ""
+echo "[2] Image to Image (WIP)"
+echo ""
+echo "[3] First time setup"
+echo ""
+read -p "Your choice: " i
+
+t2i() {
+	clear
+    source config
+    echo "Prompt:"
+    read a
+    sd -m $MODEL -W $WIDTH -H $HEIGHT -p "$a" -n "$NEG_PMT" --cfg $CFG --strength $STRENGTH --type $QUANT
+}
+
+settings() {
+source config
+    echo "Current config (Press enter to discard change):"
+
+    for var in MODEL HEIGHT WIDTH STEP STRENGTH NEG_PMT CFG QUANT; do
+        current=$(grep "^export $var=" config | cut -d '=' -f2-)
+        read -p "$var [$current]: " newval
+        if [ -n "$newval" ]; then
+            sed -i "s|^export $var=.*|export $var=$newval|" .sd-config
+        fi
+    done
+
+    echo "Config updated (=ω=)b"
+}
+case $i in
+    1)
+        t2i
+        ;;
+    2)
+        echo "It's work in progress, eh (=ω=)💧"
+        ;;
+    3) 
+	settings
+;;
+
+    *)
+        echo "no, aha"
+        ;;
+esac
