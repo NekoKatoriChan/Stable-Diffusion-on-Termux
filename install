@@ -3,3 +3,8 @@
 	apt install wget
 	wget https://github.com/NekoKatoriChan/Stable-Diffusion-on-Termux/raw/refs/heads/main/bin/sd -O $PATH/sd
 	wget https://raw.githubusercontent.com/NekoKatoriChan/Stable-Diffusion-on-Termux/refs/heads/main/compoment/sd-ez -O $PATH/sd-ez
+	wget https://raw.githubusercontent.com/NekoKatoriChan/Stable-Diffusion-on-Termux/refs/heads/main/compoment/config -O .sd-config
+	clear
+echo 'Installation completed! To run Stable Diffusion, run "sd". For easy mode, run "sd-ez"'
+chmod +x $PATH/sd
+chmod +x $PATH/sd-ez

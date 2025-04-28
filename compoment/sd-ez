@@ -1,5 +1,5 @@
 #!/bin/bash
-source config
+source .sd-config
 echo "Stable Diffusion (EZ mode)"
 echo ""
 echo "[1] Text to Image"
@@ -19,7 +19,7 @@ t2i() {
 }
 
 settings() {
-source config
+source .sd-config
     echo "Current config (Press enter to discard change):"
 
     for var in MODEL HEIGHT WIDTH STEP STRENGTH NEG_PMT CFG QUANT; do
