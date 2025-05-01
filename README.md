@@ -22,8 +22,11 @@ bash <(curl -s https://raw.githubusercontent.com/NekoKatoriChan/Stable-Diffusion
 ```
 
 ### Vulkan?
-Not yet, cuz most phone can't compatible when running it with Vulkan!
+I think my Adreno or below  don't support these thing. sad
 
+```
+bash <(curl -s https://raw.githubusercontent.com/NekoKatoriChan/Stable-Diffusion-on-Termux/main/install-vulkan)
+```
 
 # 🍊 Quick Guide
 
