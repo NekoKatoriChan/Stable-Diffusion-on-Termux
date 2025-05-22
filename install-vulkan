@@ -1,24 +1,27 @@
-#!bin/bash
+#!/bin/bash
 
-pkg update && pkg upgrade
-  apt install tur-repo x11-repo
-  apt install vulkan-loader vulkan-headers shaderc wget git cmake -y
-  git clone --recursive https://github.com/leejet/stable-diffusion.cpp
-  cd stable-diffusion.cpp
-  git pull origin master
-  git submodule init
-  git submodule update
+pkg update && pkg upgrade -y
+apt install tur-repo x11-repo -y
+apt install vulkan-loader vulkan-headers shaderc wget git cmake -y
+
+git clone --recursive https://github.com/leejet/stable-diffusion.cpp
+cd stable-diffusion.cpp
+git submodule init
+git submodule update
 
 mkdir build
 cd build
-	cmake .. -DSD_VULKAN=ON
-        cmake --build . --config Release
-	echo "Completed! Just a moment...."
-	cd bin
-	mv sd $PATH/
-	wget https://raw.githubusercontent.com/NekoKatoriChan/Stable-Diffusion-on-Termux/refs/heads/main/compoment/config -O .sd-config
-	wget https://raw.githubusercontent.com/NekoKatoriChan/Stable-Diffusion-on-Termux/refs/heads/main/compoment/sd-ez -O $PATH/sd-ez
-	chmod +x $PATH/sd-ez
-	echo 'Installation completed! To start SD, type "sd". For easy mode, type "sd-ez"'
-	sleep 3
+cmake .. -DSD_VULKAN=ON
+cmake --build . --config Release
 
+echo "Completed! Just a moment...."
+cd bin
+mv sd $PREFIX/bin/
+chmod +x $PREFIX/bin/sd
+
+wget https://raw.githubusercontent.com/NekoKatoriChan/Stable-Diffusion-on-Termux/refs/heads/main/compoment/config -O ~/.sd-config
+wget https://raw.githubusercontent.com/NekoKatoriChan/Stable-Diffusion-on-Termux/refs/heads/main/compoment/sd-ez -O $PREFIX/bin/sd-ez
+chmod +x $PREFIX/bin/sd-ez
+
+echo 'Installation completed! To start SD, type "sd". For easy mode, type "sd-ez"'
+sleep 3
