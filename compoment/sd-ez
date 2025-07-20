@@ -12,7 +12,7 @@ read -p "Your choice: " i
 
 t2i() {
 	clear
-    source config
+    source .sd-config
     echo "Prompt:"
     read a
     sd -m $MODEL -W $WIDTH -H $HEIGHT -p "$a" -n "$NEG_PMT" --cfg $CFG --strength $STRENGTH --type $QUANT
@@ -23,7 +23,7 @@ source .sd-config
     echo "Current config (Press enter to discard change):"
 
     for var in MODEL HEIGHT WIDTH STEP STRENGTH NEG_PMT CFG QUANT; do
-        current=$(grep "^export $var=" config | cut -d '=' -f2-)
+        current=$(grep "^export $var=" .sd-config | cut -d '=' -f2-)
         read -p "$var [$current]: " newval
         if [ -n "$newval" ]; then
             sed -i "s|^export $var=.*|export $var=$newval|" .sd-config
